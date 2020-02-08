@@ -9,7 +9,7 @@ import (
 
 // Build two slices of random numbers: one with our target value and one without.
 // Send each slice and target value through hsearch.LinearInt().
-func TestLinearSearch(t *testing.T) {
+func TestLinearInt(t *testing.T) {
 	var listA []int
 	var listB []int
 
