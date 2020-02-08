@@ -8,8 +8,8 @@ import (
 
 
 // Build two slices of random numbers: one with our target value and one without.
-// Send each slice and target value through hsearch.LinearInt().
-func TestLinearInt(t *testing.T) {
+// Send each slice and target value through the provided hsearc function.
+func testSearch(t *testing.T, searchFunc func([]int, int)(int, error)) {
 	var listA []int
 	var listB []int
 
@@ -29,7 +29,7 @@ func TestLinearInt(t *testing.T) {
 	listA[index] = target
 
 	// Test the first slice.
-	i, err := LinearInt(listA, target)
+	i, err := searchFunc(listA, target)
 	if err != nil {
 		t.Error(err)
 	} else if i != index {
@@ -48,7 +48,7 @@ func TestLinearInt(t *testing.T) {
 	}
 
 	// Test the second slice.
-	i, err = LinearInt(listB, target)
+	i, err = searchFunc(listB, target)
 	if i != -1 {
 		t.Error("Found unexpected target in list B")
 	} else if err == nil {
@@ -57,4 +57,12 @@ func TestLinearInt(t *testing.T) {
 		t.Error("Received unexpected error:")
 		t.Error(err)
 	}
+}
+
+func TestLinearInt(t *testing.T) {
+	testSearch(t, LinearInt)
+}
+
+func TestBinaryInt(t *testing.T) {
+	testSearch(t, BinaryInt)
 }
