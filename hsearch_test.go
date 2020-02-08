@@ -10,6 +10,10 @@ import (
 
 // Build two slices of random numbers: one with our target value and one without.
 // Send each slice and target value through the provided hsearc function.
+// t          testing object
+// searchFunc callback search function
+// iters      num of iterations to run
+// sorted     whether or not to sort the arrays before searching
 func testSearch(t *testing.T, searchFunc func([]int, int)(int, error), iters int, sorted bool) {
 	for i := 0; i < iters; i++ {
 		var listA []int
