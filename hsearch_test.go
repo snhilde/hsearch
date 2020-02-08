@@ -87,7 +87,7 @@ func TestBinaryInt(t *testing.T) {
 	listA[index] = target
 
 	// Test the first slice.
-	i, err := LinearInt(listA, target)
+	i, err := BinaryInt(listA, target)
 	if err != nil {
 		t.Log("Expected to find target")
 		t.Error(err)
@@ -109,7 +109,7 @@ func TestBinaryInt(t *testing.T) {
 	}
 
 	// Test the second slice.
-	i, err = LinearInt(listB, target)
+	i, err = BinaryInt(listB, target)
 	if i != -1 {
 		t.Error("Found unexpected target in list B")
 	} else if err == nil {
